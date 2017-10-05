@@ -14,7 +14,6 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     PersonRepository personRepository;
 
-    @Transactional
     @Override
     public void add(Person person) {
         personRepository.add(person);
@@ -23,7 +22,7 @@ public class PersonServiceImpl implements PersonService {
     @Transactional
     @Override
     public void add(List<Person> people) {
-        for(Person person : people) {
+        for(Person person : people) {                   //adding multiple people at once
             personRepository.add(person);
         }
 
@@ -51,9 +50,16 @@ public class PersonServiceImpl implements PersonService {
         personRepository.updateFirstName(person);
     }
 
-    @Transactional
     @Override
     public void delete(int id) {
         personRepository.delete(id);
+    }
+
+    @Transactional
+    @Override
+    public void delete(List<Person> people) {           //Delete multiple people at once
+        for(Person person: people) {
+            personRepository.delete(person.getId());
+        }
     }
 }

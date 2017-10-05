@@ -17,4 +17,6 @@ public interface PersonService {
     void updateFirstName(Person person);
 
     void delete(int id);
+    void delete(List<Person> people);
+//    void delete(List<Integer> peopleId);       **can also delete this way, by Id
 }

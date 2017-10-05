@@ -107,6 +107,7 @@ public class PersonRepositoryTest {
         Person person3 = findInListFirstName(people, updateFirstName);
         Assert.assertNotNull(person3);
         Assert.assertEquals(person2.getId(), person3.getId());
+        Assert.assertEquals(person3.getFirstName(), updateFirstName);
 
     }
 }
